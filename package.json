@@ -1,0 +1,34 @@
+{
+  "name": "sp-jsLinkMenu",
+  "version": "1.0.0",
+  "description": "Displays a bootstrap menu option in a SharePoint list.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=development",
+    "prod": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gunjandatta/sp-jsLinkMenu.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gunjandatta/sp-jsLinkMenu/issues"
+  },
+  "homepage": "https://github.com/gunjandatta/sp-jsLinkMenu#readme",
+  "dependencies": {
+    "gd-sprest-bs": "^2.4.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
