@@ -1,4 +1,4 @@
-import { Components, ContextInfo, Helper, jQuery } from "gd-sprest-bs";
+import { Components, Helper } from "gd-sprest-bs";
 
 declare var SP;
 
