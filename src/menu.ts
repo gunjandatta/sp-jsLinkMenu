@@ -1,4 +1,4 @@
-import { Components, ContextInfo, Helper } from "gd-sprest-bs";
+import { Components, ContextInfo, Helper, jQuery } from "gd-sprest-bs";
 
 declare var SP;
 
@@ -81,11 +81,24 @@ export class Menu {
                         // Get the selected items
                         let items = this.getSelectedItems();
 
+                        // Create html to display in a dialog
+                        let el = document.createElement("div");
+                        el.innerHTML = [
+                            "<h1>Selected Items</h1>",
+                        ].join('\n');
+
+                        // Parse the items
+                        for(let i=0; i<items.length; i++) {
+                            let item = items[i];
+
+                            // Add the item info
+                            el.innerHTML += "<p>" + item.Title + "</p>";
+                        }
+
                         // Display a dialog
                         Helper.SP.ModalDialog.showModalDialog({
-                            title: "Home Page",
-                            url: ContextInfo.webServerRelativeUrl,
-                            showMaximized: true
+                            title: "My Custom Dialog",
+                            html: el
                         });
                     }
                 }
@@ -116,8 +129,7 @@ export class Menu {
 
         // Parse the items
         for (let i = 0; i < selectedItems.length; i++) {
-            let selectedItem = selectedItems[i];
-            let itemId = selectedItems.id;
+            let itemId = selectedItems[i].id;
 
             // Parse the list items
             for (let j = 0; j < this._ctx.ListData.Row.length; j++) {
@@ -126,7 +138,7 @@ export class Menu {
                 // See if this is the target item
                 if (itemId == item.ID || itemId == item.Id) {
                     // Add the item
-                    items.push(selectedItem);
+                    items.push(item);
                     break;
                 }
             }

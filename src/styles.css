@@ -1,0 +1,9 @@
+#jslink-menu {
+    cursor: pointer;
+}
+
+.bs .jslink-menu-ddl.dropdown-menu {
+    border: none;
+    display: block;
+    position: relative;
+}

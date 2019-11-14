@@ -15,17 +15,17 @@ export const JSLink = () => {
                 return "<div id='jslink-header'>" + RenderHeaderTemplate(ctx) + "</div>";
             },
             Footer: ctx => {
-                // See if the menu exists
-                if (Menu.Exists()) {
-                    // Render the default footer
-                    return RenderFooterTemplate(ctx);
+                // See if the menu doesn't exists
+                if (!Menu.Exists()) {
+                    // Create the menu link
+                    let elMenu = Menu.CreateLink(document.querySelector("#jslink-header"));
+
+                    // Create the menu
+                    new Menu(elMenu, ctx);
                 }
 
-                // Create the menu link
-                let elMenu = Menu.CreateLink(document.querySelector("#jslink-header"));
-
-                // Create the menu
-                new Menu(elMenu, ctx);
+                // Render the default footer
+                return RenderFooterTemplate(ctx);
             }
         }
     });
