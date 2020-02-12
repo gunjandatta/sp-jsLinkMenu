@@ -1,4 +1,4 @@
-import { Helper } from "gd-sprest-bs";
+import { Components } from "gd-sprest-bs";
 
 /**
  * The click event for 'Command 2'
@@ -6,22 +6,36 @@ import { Helper } from "gd-sprest-bs";
  */
 export const Command2 = (items: Array<any>) => {
     // Create html to display in a dialog
-    let el = document.createElement("div");
-    el.innerHTML = [
-        "<h1>Selected Items</h1>",
-    ].join('\n');
+    let content = "";
 
     // Parse the items
     for (let i = 0; i < items.length; i++) {
         let item = items[i];
 
         // Add the item info
-        el.innerHTML += "<p>" + item.Title + "</p>";
+        content += "<p>" + item.Title + "</p>";
     }
 
-    // Display a dialog
-    Helper.SP.ModalDialog.showModalDialog({
-        title: "My Custom Dialog",
-        html: el
+    // Get the element to render the modal to
+    let elModal = document.querySelector("#jslink-dlg");
+    if (elModal == null) {
+        // Create the element
+        elModal = document.createElement("div");
+        elModal.id = "jslink-dlg";
+        document.body.appendChild(elModal);
+    }
+
+    // Create a dialog
+    let dlg = Components.Modal({
+        el: elModal,
+        title: "Selected Items",
+        body: content,
+        onClose: (el) => {
+            // Remove the element from the page
+            document.body.removeChild(dlg.el);
+        }
     });
+
+    // Show the dialog
+    dlg.show();
 }
