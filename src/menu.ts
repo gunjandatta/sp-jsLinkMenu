@@ -1,5 +1,7 @@
-import { Components, Helper } from "gd-sprest-bs";
+import { Components } from "gd-sprest-bs";
+import * as Commands from "./commands";
 
+/** Reference to the SP global library */
 declare var SP;
 
 /**
@@ -66,40 +68,23 @@ export class Menu {
             menuOnly: true,
             items: [
                 {
-                    text: "Option 1",
+                    text: "Command 1",
                     onClick: () => {
                         // Get the selected items
                         let items = this.getSelectedItems();
 
-                        // Alert how many items are selected
-                        alert("Number of items selected: " + items.length);
+                        // Execute command 1
+                        Commands.Command1(items);
                     }
                 },
                 {
-                    text: "Option 2",
+                    text: "Command 2",
                     onClick: () => {
                         // Get the selected items
                         let items = this.getSelectedItems();
 
-                        // Create html to display in a dialog
-                        let el = document.createElement("div");
-                        el.innerHTML = [
-                            "<h1>Selected Items</h1>",
-                        ].join('\n');
-
-                        // Parse the items
-                        for(let i=0; i<items.length; i++) {
-                            let item = items[i];
-
-                            // Add the item info
-                            el.innerHTML += "<p>" + item.Title + "</p>";
-                        }
-
-                        // Display a dialog
-                        Helper.SP.ModalDialog.showModalDialog({
-                            title: "My Custom Dialog",
-                            html: el
-                        });
+                        // Execute command 2
+                        Commands.Command2(items);
                     }
                 }
             ]

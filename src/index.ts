@@ -1,4 +1,5 @@
 import { Configuration } from "./cfg";
+import * as Commands from "./commands";
 import { JSLink } from "./jslink";
 import "./styles.css";
 
@@ -6,4 +7,4 @@ import "./styles.css";
 JSLink();
 
 // Set the global variable
-window["JSLinkMenu"] = { Configuration }
+window["JSLinkMenu"] = { Configuration, Commands }
