@@ -13,7 +13,7 @@ export const Configuration = Helper.SPConfig({
             ViewInformation: [
                 {
                     ViewName: "All Items",
-                    JSLink: "~sitecollection/siteassets/jslink-menu.js"
+                    JSLink: "~sitecollection/siteassets/sp-examples/jslink-menu.js"
                 }
             ]
         }
